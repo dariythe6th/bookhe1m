@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_about"
-        android:icon="@drawable/ic_info"
-        android:title="О магазине" />
+        android:id="@+id/nav_catalog"
+        android:icon="@drawable/ic_books"
+        android:title="Каталог" />
     <item
-        android:id="@+id/nav_contacts"
-        android:icon="@drawable/ic_contact"
-        android:title="Контакты" />
-    <item
-        android:id="@+id/nav_feedback"
+        android:id="@+id/nav_statistics"
         android:icon="@drawable/ic_feedback"
-        android:title="Обратная связь" />
+        android:title="Статистика" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_home"
+        android:title="Профиль" />
 </menu>
