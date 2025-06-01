@@ -1,0 +1,142 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <!-- Фото профиля -->
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_books"
+            android:background="@drawable/circle"
+            android:padding="8dp"
+            android:layout_marginTop="24dp" />
+
+        <!-- Имя пользователя -->
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Дарья"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/title"
+            android:layout_marginTop="16dp" />
+
+        <!-- Статус -->
+        <TextView
+            android:id="@+id/profile_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Люблю читать книги и писать отзывы"
+            android:textSize="14sp"
+            android:textColor="@color/details"
+            android:layout_marginTop="4dp" />
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="darya@example.com"
+            android:textSize="14sp"
+            android:textColor="@color/title"
+            android:layout_marginTop="4dp" />
+
+        <!-- Разделитель -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/details"
+            android:layout_marginVertical="16dp" />
+
+        <!-- Статистика -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/books_read_count"
+                    android:text="15"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/title"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Книг прочитано"
+                    android:textSize="14sp"
+                    android:textColor="@color/details"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/reviews_count"
+                    android:text="8"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/title"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+
+                <TextView
+                    android:text="Отзывов"
+                    android:textSize="14sp"
+                    android:textColor="@color/details"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Кнопки -->
+        <Button
+            android:id="@+id/edit_profile_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Редактировать профиль"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/details"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/logout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Выйти"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/progress"
+            android:textColor="@color/white"
+            android:layout_marginBottom="32dp" />
+
+    </LinearLayout>
+</ScrollView>
