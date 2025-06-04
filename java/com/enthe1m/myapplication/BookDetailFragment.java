@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+
 
 public class BookDetailFragment extends Fragment {
     private static final String ARG_BOOK = "book";
@@ -46,7 +48,11 @@ public class BookDetailFragment extends Fragment {
         Button addToCartButton = view.findViewById(R.id.add_to_cart_button);
         Button backButton = view.findViewById(R.id.back_button);
 
-        //Picasso.get().load(book.getImageUrl()).into(bookImage);
+        Glide.with(bookImage.getContext())
+                .load(book.getImageUrl()) // URL изображения из объекта BookShop
+                //.placeholder(R.drawable.placeholder_image) // Опционально: изображение-заполнитель
+                //.error(R.drawable.error_image) // Опционально: изображение при ошибке
+                .into(bookImage);
         bookTitle.setText(book.getTitle());
         bookAuthor.setText(book.getAuthor());
         bookPrice.setText(String.format("$%.2f", book.getPrice()));

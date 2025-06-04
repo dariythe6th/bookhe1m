@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.RatingBar; // Добавьте этот импорт
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
@@ -98,6 +99,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         return bookList.size();
     }
 
+
     private void showEditDialog(Context context, final Book book, final int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Редактировать книгу");
@@ -109,35 +111,31 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         final EditText authorInput = view.findViewById(R.id.author_input);
         final EditText yearInput = view.findViewById(R.id.year_input);
         final EditText genreInput = view.findViewById(R.id.genre_input);
-        final EditText ratingInput = view.findViewById(R.id.rating_input);
+        final RatingBar ratingBar = view.findViewById(R.id.rating_bar);
 
-        // Заполняем поля текущими значениями
         titleInput.setText(book.getTitle());
         authorInput.setText(book.getAuthor());
         yearInput.setText(String.valueOf(book.getYear()));
         genreInput.setText(book.getGenre());
-        ratingInput.setText(String.format("%.1f", book.getRating()));
+        ratingBar.setRating(book.getRating());
 
         builder.setPositiveButton("Сохранить", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 try {
-                    // Обновляем данные книги
                     book.setTitle(titleInput.getText().toString());
                     book.setAuthor(authorInput.getText().toString());
                     book.setYear(Integer.parseInt(yearInput.getText().toString()));
                     book.setGenre(genreInput.getText().toString());
-                    book.setRating(Float.parseFloat(ratingInput.getText().toString()));
+                    book.setRating(ratingBar.getRating());
 
-                    // Обновляем в базе данных
                     DatabaseHelper dbHelper = new DatabaseHelper(context);
                     dbHelper.updateBook(book);
 
-                    // Обновляем в списке
                     notifyItemChanged(position);
                     Toast.makeText(context, "Изменения сохранены", Toast.LENGTH_SHORT).show();
                 } catch (NumberFormatException e) {
-                    Toast.makeText(context, "Проверьте правильность ввода чисел", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Проверьте правильность ввода чисел (Год издания)", Toast.LENGTH_SHORT).show();
                 }
             }
         });

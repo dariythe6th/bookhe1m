@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide; // Добавьте этот импорт для Glide
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +71,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             bookTitle = itemView.findViewById(R.id.cart_book_title);
             bookAuthor = itemView.findViewById(R.id.cart_book_author);
             bookPrice = itemView.findViewById(R.id.cart_book_price);
-            quantityText = itemView.findViewById(R.id.cart_quantity);
+            quantityText = itemView.findViewById(R.id.cart_quantity); // Убедитесь, что ID совпадает с вашим XML
             itemTotal = itemView.findViewById(R.id.cart_item_total);
             increaseButton = itemView.findViewById(R.id.increase_button);
             decreaseButton = itemView.findViewById(R.id.decrease_button);
@@ -83,7 +85,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             bookAuthor.setText(item.getBook().getAuthor());
             bookPrice.setText(String.format("$%.2f", item.getBook().getPrice()));
             quantityText.setText(String.valueOf(item.getQuantity()));
-            itemTotal.setText(String.format("$%.2f", item.getTotalPrice()));
+            itemTotal.setText(String.format("Итого по позиции: $%.2f", item.getTotalPrice())); // Обновил текст для ясности
+
+            // Загрузка изображения с помощью Glide
+            Glide.with(itemView.getContext())
+                    .load(item.getBook().getImageUrl()) // URL изображения из объекта BookShop
+                    //.placeholder(R.drawable.placeholder_image) // Опционально: изображение-заполнитель
+                    //.error(R.drawable.error_image) // Опционально: изображение при ошибке
+                    .into(bookImage); // Куда загружать изображение
 
             increaseButton.setOnClickListener(v -> {
                 int newQuantity = item.getQuantity() + 1;
@@ -93,18 +102,17 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
             decreaseButton.setOnClickListener(v -> {
                 int newQuantity = item.getQuantity() - 1;
-                int position = getAdapterPosition();
-                listener.onQuantityChanged(bookId, newQuantity);
-                if (position != RecyclerView.NO_POSITION && newQuantity<1) {
+                // Не используйте getAdapterPosition() напрямую для удаления, так как это может привести к ошибкам
+                // Адаптер обновится через refreshCartData() в CartFragment
+                listener.onQuantityChanged(bookId, newQuantity); // Вызываем listener для обновления количества
+                if (newQuantity < 1) { // Если количество становится 0, вызываем удаление
                     listener.onItemRemoved(bookId);
                 }
             });
 
             removeButton.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    listener.onItemRemoved(bookId);
-                }
+                // Прямое удаление элемента из корзины
+                listener.onItemRemoved(bookId);
             });
         }
     }

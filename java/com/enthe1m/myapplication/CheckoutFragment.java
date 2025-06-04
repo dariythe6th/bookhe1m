@@ -44,10 +44,14 @@ public class CheckoutFragment extends Fragment {
                 return;
             }
 
+            // Оформление заказа успешно, теперь очищаем корзину
+            CartManager.getInstance().clearCart();
+
             Toast.makeText(getContext(), "Заказ оформлен!", Toast.LENGTH_LONG).show();
 
+
             if (navigationManager != null) {
-                navigationManager.navigateToFragment(new StatisticsFragment(), false);
+                navigationManager.navigateToFragment(new CartFragment(), false);
             }
         });
 

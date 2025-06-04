@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -46,14 +47,14 @@ public class BookShopAdapter extends RecyclerView.Adapter<BookShopAdapter.BookSh
     }
 
     class BookShopViewHolder extends RecyclerView.ViewHolder {
-        //private ImageView bookImage;
+        private ImageView bookImage;
         private TextView bookTitle;
         private TextView bookAuthor;
         private TextView bookPrice;
 
         public BookShopViewHolder(@NonNull View itemView) {
             super(itemView);
-           // bookImage = itemView.findViewById(R.id.book_image);
+            bookImage = itemView.findViewById(R.id.book_image);
             bookTitle = itemView.findViewById(R.id.book_title);
             bookAuthor = itemView.findViewById(R.id.book_author);
             bookPrice = itemView.findViewById(R.id.book_price);
@@ -70,6 +71,11 @@ public class BookShopAdapter extends RecyclerView.Adapter<BookShopAdapter.BookSh
             bookTitle.setText(book.getTitle());
             bookAuthor.setText(book.getAuthor());
             bookPrice.setText(String.format("$%.2f", book.getPrice()));
+            Glide.with(itemView.getContext())
+                    .load(book.getImageUrl()) // URL изображения из объекта BookShop
+                    //.placeholder(R.drawable.placeholder_image) // Опционально: изображение-заполнитель
+                    //.error(R.drawable.error_image) // Опционально: изображение при ошибке
+                    .into(bookImage); // Куда загружать изображение
         }
     }
 }

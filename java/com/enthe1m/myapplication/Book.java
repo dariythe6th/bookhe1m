@@ -23,11 +23,7 @@ public class Book {
         this.genre = genre;
         this.rating = rating;
     }
-
-    public Book() {
-
-    }
-
+    public Book() {}
     // Геттеры и сеттеры
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
