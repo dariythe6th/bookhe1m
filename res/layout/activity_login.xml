@@ -6,11 +6,20 @@
     android:padding="16dp"
     android:background="@color/white">
 
+    <TextView
+        android:text="Вход в BookHelm"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/title"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="Имя пользователя"
         android:textColor="@color/black"
         android:textColorHint="@color/details"
         android:backgroundTint="@color/accent" />
@@ -19,7 +28,7 @@
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Пароль"
         android:inputType="textPassword"
         android:textColor="@color/black"
         android:textColorHint="@color/details"
@@ -29,7 +38,7 @@
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Войти"
         android:textColor="@color/white"
         android:backgroundTint="@color/title" />
 
@@ -37,7 +46,7 @@
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="Зарегистрироваться"
         android:textColor="@color/accent"
         android:gravity="center"
         android:paddingTop="16dp" />

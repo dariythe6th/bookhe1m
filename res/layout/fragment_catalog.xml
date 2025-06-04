@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Каталог книг"
+        android:text="Ваша библиотека"
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="@color/title"

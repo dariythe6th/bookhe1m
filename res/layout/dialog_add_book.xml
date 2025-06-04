@@ -37,10 +37,15 @@
         android:inputType="text"
         android:layout_marginBottom="8dp"/>
 
-    <EditText
-        android:id="@+id/rating_input"
-        android:layout_width="match_parent"
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Рейтинг (0-5)"
-        android:inputType="numberDecimal"/>
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:rating="0.0"
+        android:theme="@style/MyRatingBar"
+        style="?android:attr/ratingBarStyle"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"/>
 </LinearLayout>

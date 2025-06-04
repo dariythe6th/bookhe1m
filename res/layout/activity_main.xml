@@ -16,10 +16,11 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="68dp"
+        app:itemBackground="@color/accent"
         android:layout_gravity="bottom"
         app:backgroundTint="@color/accent"
-        app:itemIconTint="@color/title"
-        app:itemTextColor="@color/title"
+        app:itemIconTint="@color/bottom_nav_icon_color"
+        app:itemTextColor="@color/bottom_nav_icon_color"
         app:menu="@menu/bottom_nav_menu"
         app:itemRippleColor="@color/details"
         />
